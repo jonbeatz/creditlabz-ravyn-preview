@@ -6,8 +6,8 @@
   --figure: #f4f8fb;
   --cyan: #2ee6ff;
   --cyan-ink: #041014;
-  --red: #ff6b73;
-  --red-deep: #e23b48;
+  --violet: #cbb6ff;
+  --violet-deep: #8d74e6;
   --glass: rgba(14, 18, 22, 0.72);
   --edge: rgba(168, 214, 228, 0.12);
   --radius: 3px;
@@ -235,7 +235,7 @@ a.card {
 
 .hero-figure .unit {
   margin-left: 6px;
-  color: var(--red);
+  color: var(--violet);
   font-family: var(--sans);
   font-size: 14px;
   font-weight: 600;
@@ -245,11 +245,11 @@ a.card {
 
 .summary-alert {
   background:
-    linear-gradient(115deg, rgba(226, 59, 72, 0.24), rgba(10, 12, 16, 0.55) 52%, rgba(8, 10, 12, 0.4));
+    linear-gradient(115deg, rgba(157, 122, 255, 0.26), rgba(10, 12, 16, 0.55) 52%, rgba(8, 10, 12, 0.4));
 }
 
 .summary-alert .hero-figure,
-.summary-alert .eyebrow { color: var(--red); }
+.summary-alert .eyebrow { color: var(--violet); }
 
 .meta {
   margin: 0;
@@ -297,8 +297,8 @@ a.card {
 }
 
 .badge-urgent {
-  background: rgba(225, 90, 74, 0.22);
-  color: var(--red);
+  background: rgba(157, 122, 255, 0.22);
+  color: var(--violet);
 }
 
 .figure-row {
@@ -375,9 +375,9 @@ a.card {
 
 .spark.up rect { fill: var(--cyan); }
 
-.spark.down path { stroke: var(--red); }
+.spark.down path { stroke: var(--violet); }
 
-.spark.down rect { fill: var(--red); }
+.spark.down rect { fill: var(--violet); }
 
 .card-foot {
   display: flex;
@@ -393,7 +393,7 @@ a.card {
 
 .status-ok { color: var(--faint); }
 
-.status-bad { color: var(--red); }
+.status-bad { color: var(--violet); }
 
 .ledger {
   display: grid;
@@ -435,7 +435,7 @@ a.card {
   align-items: center;
   padding: 20px 18px;
   background:
-    linear-gradient(105deg, rgba(226, 59, 72, 0.26), rgba(10, 12, 16, 0.62) 50%, rgba(8, 10, 12, 0.45));
+    linear-gradient(105deg, rgba(157, 122, 255, 0.28), rgba(10, 12, 16, 0.62) 50%, rgba(8, 10, 12, 0.45));
 }
 
 .alert-count {
@@ -444,10 +444,10 @@ a.card {
 
 .alert-count .hero-figure {
   margin: 0;
-  color: var(--red);
+  color: var(--violet);
 }
 
-.alert-count .eyebrow { color: var(--red); }
+.alert-count .eyebrow { color: var(--violet); }
 
 .ticks {
   display: flex;
@@ -459,7 +459,7 @@ a.card {
   width: 8px;
   height: 8px;
   border-radius: var(--radius-tight);
-  background: var(--red-deep);
+  background: var(--violet-deep);
 }
 
 .alert-copy h3 {
@@ -494,7 +494,7 @@ a.card {
 
 .error {
   margin: 0;
-  color: var(--red);
+  color: var(--violet);
 }
 
 .colophon {

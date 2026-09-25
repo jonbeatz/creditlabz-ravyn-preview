@@ -38,8 +38,9 @@ This branch is the **cyan-dark alternate (v2)**. `main` keeps gold.
 
 Near-black charcoal field, glass cards that stay dark, tight 3px corners.
 Clear cyan (`#2ee6ff`) for accents: the mark, section indexes, live badges,
-upward traces, and focus. Signal red is only for deadlines and downward
-traces. No gold, no purple, no teal or aqua wash.
+upward traces, and focus. Urgency, deadlines, and downward traces use a soft
+purple (`#cbb6ff`) so flags still read as flags. No gold, no red or salmon,
+no teal or aqua wash.
 
 Type is one paired system: **IBM Plex Sans** for titles, labels, and body;
 **IBM Plex Mono** for balances and countdown figures. Tabular, dashboard-tech
