@@ -59,23 +59,78 @@ function countdownBits(days) {
   return { num: String(days), unit: "days" };
 }
 
-function sparkline(values) {
+function smoothLine(points) {
+  const n = points.length;
+  if (n < 2) return "";
+  const fmt = (x, y) => `${x.toFixed(2)} ${y.toFixed(2)}`;
+  if (n === 2) return `M${fmt(points[0][0], points[0][1])} L${fmt(points[1][0], points[1][1])}`;
+
+  const slope = [];
+  const dx = [];
+  for (let i = 0; i < n - 1; i += 1) {
+    const deltaX = points[i + 1][0] - points[i][0] || 1;
+    dx.push(deltaX);
+    slope.push((points[i + 1][1] - points[i][1]) / deltaX);
+  }
+
+  const tangent = new Array(n);
+  tangent[0] = slope[0];
+  tangent[n - 1] = slope[n - 2];
+  for (let i = 1; i < n - 1; i += 1) {
+    tangent[i] = slope[i - 1] * slope[i] <= 0 ? 0 : (slope[i - 1] + slope[i]) / 2;
+  }
+  for (let i = 0; i < n - 1; i += 1) {
+    if (Math.abs(slope[i]) < 1e-6) {
+      tangent[i] = 0;
+      tangent[i + 1] = 0;
+      continue;
+    }
+    const a = tangent[i] / slope[i];
+    const b = tangent[i + 1] / slope[i];
+    const hypot = a * a + b * b;
+    if (hypot > 9) {
+      const scale = 3 / Math.sqrt(hypot);
+      tangent[i] = scale * a * slope[i];
+      tangent[i + 1] = scale * b * slope[i];
+    }
+  }
+
+  let path = `M${fmt(points[0][0], points[0][1])}`;
+  for (let i = 0; i < n - 1; i += 1) {
+    const p0 = points[i];
+    const p1 = points[i + 1];
+    const c1x = p0[0] + dx[i] / 3;
+    const c1y = p0[1] + (tangent[i] * dx[i]) / 3;
+    const c2x = p1[0] - dx[i] / 3;
+    const c2y = p1[1] - (tangent[i + 1] * dx[i]) / 3;
+    path += ` C${fmt(c1x, c1y)} ${fmt(c2x, c2y)} ${fmt(p1[0], p1[1])}`;
+  }
+  return path;
+}
+
+function sparkline(values, id) {
   if (!Array.isArray(values) || values.length < 2) return "";
-  const width = 160;
-  const height = 40;
+  const width = 300;
+  const height = 64;
+  const baselineY = height - 6;
   const min = Math.min(...values);
   const max = Math.max(...values);
   const span = max - min || 1;
+  const plotTop = 14;
+  const plotBottom = baselineY - 4;
   const coords = values.map((value, index) => {
-    const x = (index / (values.length - 1)) * (width - 4) + 2;
-    const y = height - 6 - ((value - min) / span) * (height - 12);
+    const x = (index / (values.length - 1)) * (width - 8) + 4;
+    const y = plotBottom - ((value - min) / span) * (plotBottom - plotTop);
     return [x, y];
   });
-  const path = coords
-    .map((point, index) => `${index === 0 ? "M" : "L"}${point[0].toFixed(2)} ${point[1].toFixed(2)}`)
-    .join(" ");
-  const falling = values[values.length - 1] < values[0];
+  const line = smoothLine(coords);
+  const first = coords[0];
   const last = coords[coords.length - 1];
+  const area = `${line} L${last[0].toFixed(2)} ${baselineY.toFixed(2)} L${first[0].toFixed(2)} ${baselineY.toFixed(2)} Z`;
+  const peakY = Math.min(...coords.map((point) => point[1]));
+  const falling = values[values.length - 1] < values[0];
+  const accent = falling ? "var(--violet)" : "var(--cyan)";
+  const uid = `spark-${String(id || "trace").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "trace"}`;
   const trend = falling ? "lower" : "higher or level";
   return `
     <div class="trace">
@@ -84,9 +139,37 @@ function sparkline(values) {
         <span class="sr">Dummy series ends ${trend} than it starts.</span>
       </p>
       <svg class="spark ${falling ? "down" : "up"}" viewBox="0 0 ${width} ${height}" aria-hidden="true" focusable="false">
-        <line class="baseline" x1="0" y1="${height - 1}" x2="${width}" y2="${height - 1}"></line>
-        <path d="${path}"></path>
-        <rect x="${(last[0] - 1.5).toFixed(2)}" y="${(last[1] - 1.5).toFixed(2)}" width="3" height="3"></rect>
+        <defs>
+          <linearGradient id="${uid}-fill" gradientUnits="userSpaceOnUse" x1="0" y1="${peakY.toFixed(2)}" x2="0" y2="${baselineY.toFixed(2)}">
+            <stop offset="0%" stop-color="${accent}" stop-opacity="0.4"></stop>
+            <stop offset="100%" stop-color="${accent}" stop-opacity="0"></stop>
+          </linearGradient>
+          <linearGradient id="${uid}-edge" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="${width}" y2="0">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2"></stop>
+            <stop offset="9%" stop-color="#ffffff" stop-opacity="1"></stop>
+            <stop offset="93%" stop-color="#ffffff" stop-opacity="1"></stop>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0.45"></stop>
+          </linearGradient>
+          <filter id="${uid}-glow" x="-25%" y="-90%" width="150%" height="280%" color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3.4" result="wide"></feGaussianBlur>
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="tight"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="wide"></feMergeNode>
+              <feMergeNode in="tight"></feMergeNode>
+            </feMerge>
+          </filter>
+          <mask id="${uid}-mask">
+            <rect width="${width}" height="${height}" fill="url(#${uid}-edge)"></rect>
+          </mask>
+        </defs>
+        <g mask="url(#${uid}-mask)">
+          <line class="baseline" x1="2" y1="${baselineY.toFixed(2)}" x2="${width - 2}" y2="${baselineY.toFixed(2)}"></line>
+          <path class="spark-area" d="${area}" fill="url(#${uid}-fill)"></path>
+          <path class="spark-glow" d="${line}" filter="url(#${uid}-glow)"></path>
+          <path class="spark-line" d="${line}"></path>
+        </g>
+        <circle class="spark-halo" cx="${last[0].toFixed(2)}" cy="${last[1].toFixed(2)}" r="6"></circle>
+        <circle class="spark-dot" cx="${last[0].toFixed(2)}" cy="${last[1].toFixed(2)}" r="2.2"></circle>
       </svg>
     </div>`;
 }
@@ -143,7 +226,7 @@ function renderLive(items) {
     host.innerHTML = '<p class="empty">No dummy live balances.</p>';
     return;
   }
-  host.innerHTML = items.map((item) => `
+  host.innerHTML = items.map((item, index) => `
     <article class="card live-card">
       <div class="card-top">
         <h3 class="service">${esc(item.label)}</h3>
@@ -153,7 +236,7 @@ function renderLive(items) {
         <p class="figure">${esc(formatMoney(item.balance))}</p>
         <span class="currency">${esc(item.currency || "USD")}</span>
       </div>
-      ${sparkline(item.spark)}
+      ${sparkline(item.spark, `${item.id || "trace"}-${index}`)}
       ${updatedLine(item.updated_at, item.status)}
     </article>
   `).join("");
