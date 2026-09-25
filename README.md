@@ -86,6 +86,10 @@ gets cut as a **new branch** off `main` and previewed before it lands. This
 file is the v2 cyan-dark branch. Nothing is silently replaced. No PRs unless
 Jon asks.
 
+Any UI change on this branch also replaces `assets/screenshot.png` in the
+same commit. The README hero has to show the current cyan-dark build, not a
+stale gold or earlier shot.
+
 ## Use this repo as a template
 
 House pattern for Jon's preview repos: badges → live link → hero screenshot →
