@@ -1,17 +1,20 @@
 :root {
-  --bg: #100e0c;
-  --ink: #f3efe8;
-  --muted: #c8bfb4;
-  --faint: #8f877e;
-  --gold: #e0b15a;
-  --gold-soft: #f3e6cc;
-  --red: #ff8f80;
-  --red-deep: #e15a4a;
-  --glass: rgba(255, 246, 232, 0.045);
-  --edge: rgba(255, 244, 230, 0.08);
-  --radius: 4px;
+  --bg: #07080a;
+  --ink: #e8eef2;
+  --muted: #93a0ab;
+  --faint: #66737e;
+  --figure: #f4f8fb;
+  --cyan: #2ee6ff;
+  --cyan-ink: #041014;
+  --red: #ff6b73;
+  --red-deep: #e23b48;
+  --glass: rgba(14, 18, 22, 0.72);
+  --edge: rgba(168, 214, 228, 0.12);
+  --radius: 3px;
   --radius-tight: 2px;
-  --shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  --sans: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color-scheme: dark;
 }
 
@@ -24,18 +27,18 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  font-family: var(--sans);
   font-size: 16px;
   line-height: 1.45;
 }
 
 body::selection,
 .page::selection {
-  background: var(--gold);
-  color: #1a140c;
+  background: var(--cyan);
+  color: var(--cyan-ink);
 }
 
-a { color: var(--gold-soft); }
+a { color: var(--cyan); }
 
 .atmosphere {
   position: fixed;
@@ -43,16 +46,16 @@ a { color: var(--gold-soft); }
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(980px 520px at 92% -12%, rgba(224, 177, 90, 0.16), transparent 58%),
-    radial-gradient(760px 480px at -8% 108%, rgba(225, 90, 74, 0.12), transparent 56%),
-    radial-gradient(640px 380px at 48% 36%, rgba(255, 244, 230, 0.035), transparent 70%);
+    radial-gradient(880px 460px at 96% -14%, rgba(46, 230, 255, 0.11), transparent 58%),
+    radial-gradient(640px 420px at -6% 108%, rgba(46, 230, 255, 0.045), transparent 54%),
+    #07080a;
 }
 
 .atmosphere::after {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.18;
+  opacity: 0.1;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
 }
 
@@ -71,8 +74,8 @@ a { color: var(--gold-soft); }
   z-index: 40;
   padding: 8px 10px;
   border-radius: var(--radius-tight);
-  background: var(--gold);
-  color: #1a140c;
+  background: var(--cyan);
+  color: var(--cyan-ink);
   text-decoration: none;
 }
 
@@ -89,15 +92,15 @@ a { color: var(--gold-soft); }
   flex-wrap: wrap;
   margin: 0;
   padding: 11px 18px;
-  background: rgba(22, 18, 15, 0.92);
-  box-shadow: inset 0 2px 0 var(--gold);
+  background: rgba(7, 8, 10, 0.9);
+  box-shadow: inset 0 2px 0 var(--cyan);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 .stamp {
   margin: 0;
-  color: var(--gold);
+  color: var(--cyan);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -128,14 +131,14 @@ a { color: var(--gold-soft); }
 
 h1 {
   margin: 0;
-  font-family: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+  font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(40px, 8vw, 72px);
-  line-height: 0.92;
-  letter-spacing: -0.035em;
+  font-size: clamp(40px, 7vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
 }
 
-h1 .mark { color: var(--gold); }
+h1 .mark { color: var(--cyan); }
 
 .asof {
   margin: 0;
@@ -156,7 +159,7 @@ h1 .mark { color: var(--gold); }
 .section-head h2 {
   margin: 0;
   color: var(--ink);
-  font-family: "Outfit", "Avenir Next", sans-serif;
+  font-family: var(--sans);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -165,7 +168,7 @@ h1 .mark { color: var(--gold); }
 
 .section-head h2 span {
   margin-right: 8px;
-  color: var(--gold);
+  color: var(--cyan);
 }
 
 .section-head p {
@@ -188,12 +191,12 @@ body:not(.ready) .section { display: none; }
   border: 1px solid var(--edge);
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(255, 246, 232, 0.075), rgba(255, 246, 232, 0.028) 42%, rgba(255, 246, 232, 0.02));
+    linear-gradient(180deg, rgba(46, 230, 255, 0.05), rgba(12, 16, 20, 0.82) 34%, rgba(8, 10, 12, 0.9));
   box-shadow:
-    inset 0 1px 0 rgba(255, 244, 230, 0.05),
+    inset 0 1px 0 rgba(190, 230, 242, 0.06),
     var(--shadow);
-  backdrop-filter: blur(22px) saturate(1.35);
-  -webkit-backdrop-filter: blur(22px) saturate(1.35);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
   transition: transform 160ms ease, background 160ms ease;
 }
 
@@ -205,7 +208,7 @@ a.card {
 .card:hover {
   transform: translateY(-2px);
   background:
-    linear-gradient(180deg, rgba(255, 246, 232, 0.1), rgba(255, 246, 232, 0.04) 46%, rgba(255, 246, 232, 0.025));
+    linear-gradient(180deg, rgba(46, 230, 255, 0.08), rgba(14, 18, 22, 0.86) 36%, rgba(8, 10, 12, 0.92));
 }
 
 .summary-card { padding: 16px 16px 14px; }
@@ -221,19 +224,19 @@ a.card {
 
 .hero-figure {
   margin: 10px 0 6px;
-  color: var(--gold-soft);
-  font-family: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+  color: var(--figure);
+  font-family: var(--mono);
   font-weight: 500;
-  font-size: clamp(36px, 5vw, 52px);
-  line-height: 0.95;
+  font-size: clamp(32px, 4.2vw, 46px);
+  line-height: 1;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
 }
 
 .hero-figure .unit {
-  margin-left: 4px;
+  margin-left: 6px;
   color: var(--red);
-  font-family: "Outfit", "Avenir Next", sans-serif;
+  font-family: var(--sans);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -242,7 +245,7 @@ a.card {
 
 .summary-alert {
   background:
-    linear-gradient(115deg, rgba(225, 90, 74, 0.22), rgba(224, 177, 90, 0.07) 46%, rgba(255, 246, 232, 0.03));
+    linear-gradient(115deg, rgba(226, 59, 72, 0.24), rgba(10, 12, 16, 0.55) 52%, rgba(8, 10, 12, 0.4));
 }
 
 .summary-alert .hero-figure,
@@ -278,8 +281,8 @@ a.card {
   display: inline-block;
   padding: 3px 6px;
   border-radius: var(--radius-tight);
-  background: rgba(224, 177, 90, 0.16);
-  color: var(--gold-soft);
+  background: rgba(46, 230, 255, 0.12);
+  color: var(--cyan);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -289,7 +292,7 @@ a.card {
 }
 
 .badge-manual {
-  background: rgba(243, 239, 232, 0.08);
+  background: rgba(232, 238, 242, 0.08);
   color: var(--muted);
 }
 
@@ -307,10 +310,10 @@ a.card {
 
 .figure {
   margin: 0;
-  color: var(--gold-soft);
-  font-family: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+  color: var(--figure);
+  font-family: var(--mono);
   font-weight: 500;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(28px, 3.4vw, 38px);
   line-height: 1;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
@@ -323,9 +326,10 @@ a.card {
 
 .currency {
   color: var(--faint);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
 }
 
 .cadence {
@@ -361,15 +365,15 @@ a.card {
 }
 
 .spark .baseline {
-  stroke: rgba(243, 239, 232, 0.14);
+  stroke: rgba(232, 238, 242, 0.16);
   stroke-width: 1;
 }
 
 .spark rect { stroke: none; }
 
-.spark.up path { stroke: var(--gold); }
+.spark.up path { stroke: var(--cyan); }
 
-.spark.up rect { fill: var(--gold); }
+.spark.up rect { fill: var(--cyan); }
 
 .spark.down path { stroke: var(--red); }
 
@@ -431,7 +435,7 @@ a.card {
   align-items: center;
   padding: 20px 18px;
   background:
-    linear-gradient(105deg, rgba(225, 90, 74, 0.24), rgba(224, 177, 90, 0.08) 48%, rgba(255, 246, 232, 0.03));
+    linear-gradient(105deg, rgba(226, 59, 72, 0.26), rgba(10, 12, 16, 0.62) 50%, rgba(8, 10, 12, 0.45));
 }
 
 .alert-count {
@@ -460,16 +464,16 @@ a.card {
 
 .alert-copy h3 {
   margin: 8px 0 6px;
-  font-family: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
-  font-size: clamp(26px, 3vw, 34px);
-  font-weight: 500;
+  font-family: var(--sans);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
 
 .deadline {
   margin: 0 0 8px;
-  color: var(--gold);
+  color: var(--cyan);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -496,7 +500,7 @@ a.card {
 .colophon {
   margin-top: 48px;
   padding-top: 18px;
-  border-top: 1px solid rgba(255, 244, 230, 0.08);
+  border-top: 1px solid rgba(168, 214, 228, 0.12);
 }
 
 .colophon p:last-child {
@@ -507,8 +511,8 @@ a.card {
 }
 
 code {
-  color: var(--gold-soft);
-  font-family: "Outfit", "Avenir Next", sans-serif;
+  color: var(--cyan);
+  font-family: var(--mono);
   font-size: 0.95em;
 }
 
@@ -525,7 +529,7 @@ code {
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--cyan);
   outline-offset: 3px;
 }
 
