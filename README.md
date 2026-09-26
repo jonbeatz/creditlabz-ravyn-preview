@@ -11,10 +11,11 @@
 **Published Pages:** https://jonbeatz.github.io/creditlabz-ravyn-preview/
 
 GitHub Pages is still built from **`preview/creditlabz-v2-cyan-dark`**, so that
-URL can still show the previous pass. This v3 branch is pushed. Pointing Pages
-at it needs a credential that can update the site: the Pages API returned 403
-for the token available here. Set the source to
-`preview/creditlabz-v3-next-pass`, folder `/`, to publish this desk.
+URL still shows the previous pass. This v3 branch is pushed and there is no
+pull request. Switching the source needs Pages admin: both the cloud token and
+the Actions token got HTTP 403 (`pages=write` is not granted), so the setting
+cannot be changed from here. In the repo, set Pages → Deploy from a branch →
+`preview/creditlabz-v3-next-pass`, folder `/`.
 `main` still holds the earlier gold entry and is not modified by this pass.
 
 ![CreditLabz v3 preview](assets/screenshot.png)
