@@ -176,7 +176,7 @@
     {
       "n": "05",
       "title": "Draw usage as mini bars",
-      "detail": "Slate bars for earlier days, a red bar for the latest day."
+      "detail": "Cool bars for earlier days, a cyan bar for the latest day."
     }
   ]
 }
