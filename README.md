@@ -1,60 +1,68 @@
-# ⚡ CreditLabz — Ravyn Preview (v2 cyan-dark)
+# CreditLabz — Ravyn Preview (v3)
 
-> Cyan-dark alternate for Jon's **CreditLabz** bake-off. This branch is the
-> v2 direction: near-black charcoal with clear cyan accents. **`main` keeps
-> the gold direction.**
+> Ravyn's next bake-off pass for Jon's **CreditLabz** desk. Deep charcoal and
+> cool gray, with red as the lead accent and gold only as a micro accent.
 
-[![GitHub Pages](https://img.shields.io/badge/github%20pages-serves%20main-lightgrey)](https://jonbeatz.github.io/creditlabz-ravyn-preview/)
-[![Branch](https://img.shields.io/badge/branch-preview%2Fcreditlabz--v2--cyan--dark-2ee6ff)](https://github.com/jonbeatz/creditlabz-ravyn-preview/tree/preview/creditlabz-v2-cyan-dark)
-[![Last commit](https://img.shields.io/github/last-commit/jonbeatz/creditlabz-ravyn-preview/preview/creditlabz-v2-cyan-dark)](https://github.com/jonbeatz/creditlabz-ravyn-preview/commits/preview/creditlabz-v2-cyan-dark)
-![Static site](https://img.shields.io/badge/site-static%20html-blue)
+[![GitHub Pages](https://img.shields.io/badge/github%20pages-v3%20branch-e10600)](https://jonbeatz.github.io/creditlabz-ravyn-preview/)
+[![Branch](https://img.shields.io/badge/branch-preview%2Fcreditlabz--v3--next--pass-e10600)](https://github.com/jonbeatz/creditlabz-ravyn-preview/tree/preview/creditlabz-v3-next-pass)
+[![Last commit](https://img.shields.io/github/last-commit/jonbeatz/creditlabz-ravyn-preview/preview/creditlabz-v3-next-pass)](https://github.com/jonbeatz/creditlabz-ravyn-preview/commits/preview/creditlabz-v3-next-pass)
+![Static site](https://img.shields.io/badge/site-static%20html-8b95a3)
 
-**🚀 Published Pages:** https://jonbeatz.github.io/creditlabz-ravyn-preview/
+**Published Pages:** https://jonbeatz.github.io/creditlabz-ravyn-preview/
 
-Live GitHub Pages is served from **`main`**, so that URL can still show the
-gold build. This cyan-dark alternate lives on
-`preview/creditlabz-v2-cyan-dark` until Pages is pointed here.
+GitHub Pages for this repo is served from **`preview/creditlabz-v3-next-pass`**.
+`main` still holds the earlier gold entry and is not modified by this pass.
 
-![CreditLabz cyan-dark preview](assets/screenshot.png)
+![CreditLabz v3 preview](assets/screenshot.png)
 
-> **Prototype data only.** Every balance, renewal, sparkline, and deadline is
-> invented. No credentials are stored or sent from this page.
+> **Prototype data only.** Every balance, renewal date, usage bar, and
+> connection is invented. No credentials are stored or sent from this page.
 
 ## What's inside
 
-- **Live API balance cards** — fal.ai, OpenRouter, DeepSeek. Mocked for now;
-  planned for authenticated server-side pulls behind the private REST API.
-- **Manual account cards** — Higgsfield API, Higgsfield Starter ($19/mo),
-  Cursor ($60/mo), Codex ($20/mo), Muse. For services with no public balance
-  endpoint.
-- **Higgsfield cashback flag** — the Sept 30 use-or-lose promo deadline stays
-  visible.
-- **Dummy ledger JSON** — `data/balances.json` drives the page; `prototype`
-  must stay `true`.
+- **Live API balance cards** — fal.ai, OpenRouter, and DeepSeek. Each card
+  draws mini usage bars (slate for earlier days, glowing red for the latest)
+  and a sample delta versus the 12-day average: fal.ai ▲$2.40, OpenRouter
+  ▲$0.95, DeepSeek ▲$1.80.
+- **7-day usage panel** — the same sample window, last seven days combined.
+- **Manual accounts** — Higgsfield API, Higgsfield Starter ($19/mo), Cursor
+  ($60/mo, renews October 11, 2026), Codex ($20/mo), Muse (Trinity) (Power
+  plan, 36% used, 315M tokens left, resets September 28, 2026), and GrokBot
+  (Ravyn).
+- **GrokBot (Ravyn)** — a manual account. Weekly usage 3%, resets October 2,
+  2026. On-demand $8.09 / $2, shown over limit in red, resets October 11,
+  2026. She appears in Connections, the configure dialog, the manual list,
+  and the sanitized export. Cyan is only her monogram.
+- **Configured connections** — 0/9. None of the sample slots are authenticated.
+- **Higgsfield cashback** — use or lose, closes September 30, 2026. The desk
+  prints that calendar date. It does not count down in days.
+- **Desk shell** — sticky Overview / Connections / Build plan tabs, a
+  four-metric strip, monograms, a configure/edit dialog, an access-model
+  panel, and one global DEMO banner.
+- **Dummy ledger** — `data/balances.json` drives the page. `prototype` stays
+  `true`. Export setup downloads a sanitized JSON file with no credential
+  fields.
 
 ## Design language
 
-This branch is the **cyan-dark alternate (v2)**. `main` keeps gold.
+Deep charcoal field, cool gray grid, flat panels. Corners are 4px. No colored
+side strokes and no glass wash. **Red** leads: the latest usage bar, over-limit
+amounts, use-or-lose, and the configure button. **Gold** is micro only — a tick
+in the wordmark, a slit in the mark, and the ledger filename. Cyan is reserved
+for the GrokBot (Ravyn) monogram.
 
-Near-black charcoal field, glass cards that stay dark, tight 3px corners.
-Clear cyan (`#2ee6ff`) for accents: the mark, section indexes, live badges,
-upward traces, and focus. Urgency, deadlines, and downward traces use a soft
-purple (`#cbb6ff`) so flags still read as flags. No gold, no red or salmon,
-no teal or aqua wash.
-
-Type is one paired system: **IBM Plex Sans** for titles, labels, and body;
-**IBM Plex Mono** for balances and countdown figures. Tabular, dashboard-tech
-numbers. No display serif.
+**Manrope** carries the UI. **IBM Plex Mono** carries figures, eyebrows, and
+labels.
 
 ## Tech stack
 
-| Layer   | Choice                                                         |
-| ------- | -------------------------------------------------------------- |
-| Markup  | Static `index.html` + `css/` + `js/`                            |
-| Data    | `data/balances.json` (dummy only, clearly labeled)             |
-| Type    | IBM Plex Sans + IBM Plex Mono                                  |
-| Runtime | None — opens via a local static server or GitHub Pages         |
-| Hosting | GitHub Pages, served from `main` (`.nojekyll`, no Jekyll pass) |
+| Layer   | Choice                                                                 |
+| ------- | ---------------------------------------------------------------------- |
+| Markup  | Static `index.html` + `css/` + `js/`                                  |
+| Data    | `data/balances.json` (dummy only, clearly labeled)                    |
+| Type    | Manrope + IBM Plex Mono                                                |
+| Runtime | None — a local static server or GitHub Pages                           |
+| Hosting | GitHub Pages from `preview/creditlabz-v3-next-pass` (`.nojekyll`)     |
 
 ## Project structure
 
@@ -65,7 +73,8 @@ creditlabz-ravyn-preview/
 ├── js/app.js
 ├── data/balances.json
 ├── assets/
-│   └── screenshot.png   # README hero shot (cyan-dark)
+│   ├── logo.png
+│   └── screenshot.png
 ├── favicon.svg
 ├── .nojekyll
 └── README.md
@@ -79,18 +88,8 @@ python3 -m http.server 4173
 
 Visit http://127.0.0.1:4173/ — a local server is required so the JSON ledger loads.
 
-## Workflow — branches, not overwrites
+## Workflow
 
-`main` always mirrors the latest approved build (gold, for now). Every change
-gets cut as a **new branch** off `main` and previewed before it lands. This
-file is the v2 cyan-dark branch. Nothing is silently replaced. No PRs unless
-Jon asks.
-
-Any UI change on this branch also replaces `assets/screenshot.png` in the
-same commit. The README hero has to show the current cyan-dark build, not a
-stale gold or earlier shot.
-
-## Use this repo as a template
-
-House pattern for Jon's preview repos: badges → live link → hero screenshot →
-what's inside → design language → tech stack → structure → workflow.
+This file is the v3 branch. It does not merge to `main`. No pull request unless
+Jon asks. Any UI change on this branch also replaces `assets/screenshot.png`
+in the same commit, so the README hero matches the current dark desk.
