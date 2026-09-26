@@ -1,0 +1,182 @@
+{
+  "as_of": "2026-09-25T21:40:00Z",
+  "prototype": true,
+  "notice": "PROTOTYPE / FAKE DATA — invented figures only. No provider was contacted and no API key is stored.",
+  "usage_end": "2026-09-25",
+  "live": [
+    {
+      "id": "fal",
+      "label": "fal.ai",
+      "monogram": "F",
+      "blurb": "Image + video API",
+      "access": "live",
+      "configured": false,
+      "balance": 42.18,
+      "currency": "USD",
+      "updated_at": "2026-09-25T18:12:00Z",
+      "usage": [2.3, 2.5, 2.7, 3.1, 3.3, 3.6, 3.9, 4.3, 4.5, 5.2, 6.2, 6.4],
+      "delta_vs_12d_avg": 2.4
+    },
+    {
+      "id": "openrouter",
+      "label": "OpenRouter",
+      "monogram": "OR",
+      "blurb": "Multi-model API",
+      "access": "live",
+      "configured": false,
+      "balance": 18.5,
+      "currency": "USD",
+      "updated_at": "2026-09-25T18:12:00Z",
+      "usage": [1.8, 2.0, 1.9, 2.2, 2.1, 2.3, 2.0, 2.4, 2.5, 2.2, 2.4, 3.2],
+      "delta_vs_12d_avg": 0.95
+    },
+    {
+      "id": "deepseek",
+      "label": "DeepSeek",
+      "monogram": "DS",
+      "blurb": "Direct API",
+      "access": "live",
+      "configured": false,
+      "balance": 9.2,
+      "currency": "USD",
+      "updated_at": "2026-09-25T18:12:00Z",
+      "usage": [1.6, 1.8, 2.0, 1.9, 2.2, 2.4, 2.6, 2.8, 3.0, 3.4, 4.2, 4.5],
+      "delta_vs_12d_avg": 1.8
+    }
+  ],
+  "manual": [
+    {
+      "id": "higgsfield_api",
+      "label": "Higgsfield API",
+      "monogram": "H",
+      "blurb": "Manual balance placeholder. No public balance endpoint.",
+      "access": "manual",
+      "configured": false,
+      "amount": null,
+      "currency": "USD",
+      "updated_at": "2026-09-25T09:04:00Z",
+      "cashback": {
+        "label": "Use or lose",
+        "date": "2026-09-30",
+        "detail": "Cashback in this dummy ledger closes on this date. Nothing here checks a real Higgsfield account."
+      }
+    },
+    {
+      "id": "higgsfield_starter",
+      "label": "Higgsfield Starter",
+      "monogram": "S",
+      "blurb": "Starter plan",
+      "access": "manual",
+      "configured": false,
+      "amount": 19,
+      "currency": "USD",
+      "cadence": "monthly",
+      "updated_at": "2026-09-25T09:04:00Z"
+    },
+    {
+      "id": "cursor",
+      "label": "Cursor",
+      "monogram": "Cu",
+      "blurb": "Editor plan",
+      "access": "manual",
+      "configured": false,
+      "amount": 60,
+      "currency": "USD",
+      "cadence": "monthly",
+      "renews_on": "2026-10-11",
+      "updated_at": "2026-09-25T09:04:00Z"
+    },
+    {
+      "id": "codex",
+      "label": "Codex",
+      "monogram": "Cx",
+      "blurb": "OpenAI plan",
+      "access": "manual",
+      "configured": false,
+      "amount": 20,
+      "currency": "USD",
+      "cadence": "monthly",
+      "updated_at": "2026-09-25T09:04:00Z"
+    },
+    {
+      "id": "muse",
+      "label": "Muse (Trinity)",
+      "monogram": "M",
+      "blurb": "Power plan",
+      "access": "manual",
+      "configured": false,
+      "plan": "Power",
+      "used_pct": 36,
+      "tokens_left": "315M",
+      "resets_on": "2026-09-28",
+      "amount": null,
+      "currency": "USD",
+      "updated_at": "2026-09-25T09:04:00Z"
+    },
+    {
+      "id": "grokbot",
+      "label": "GrokBot (Ravyn)",
+      "monogram": "R",
+      "blurb": "Manual account",
+      "access": "manual",
+      "configured": false,
+      "identity": "grokbot",
+      "weekly_used_pct": 3,
+      "weekly_resets_on": "2026-10-02",
+      "ondemand_spent": 8.09,
+      "ondemand_cap": 2,
+      "ondemand_resets_on": "2026-10-11",
+      "over_limit": true,
+      "amount": null,
+      "currency": "USD",
+      "updated_at": "2026-09-25T09:04:00Z"
+    }
+  ],
+  "access_model": [
+    {
+      "id": "server",
+      "title": "Server-side pulls",
+      "detail": "Planned for fal.ai, OpenRouter, and DeepSeek. A private server would hold the credential. This page never does.",
+      "accounts": ["fal.ai", "OpenRouter", "DeepSeek"]
+    },
+    {
+      "id": "manual",
+      "title": "Manual entry",
+      "detail": "Hand-entered sample figures. Muse (Trinity) and GrokBot (Ravyn) stay on this list.",
+      "accounts": ["Higgsfield API", "Higgsfield Starter", "Cursor", "Codex", "Muse (Trinity)", "GrokBot (Ravyn)"]
+    },
+    {
+      "id": "prototype",
+      "title": "This prototype",
+      "detail": "Reads data/balances.json only. Export omits credential-shaped fields. Configured connections stay at zero until a real slot is authenticated.",
+      "accounts": []
+    }
+  ],
+  "build_plan": [
+    {
+      "n": "01",
+      "title": "Keep the dummy ledger",
+      "detail": "data/balances.json stays the source until a private API exists."
+    },
+    {
+      "n": "02",
+      "title": "Pull the three live balances server-side",
+      "detail": "fal.ai, OpenRouter, and DeepSeek. The browser does not hold a key."
+    },
+    {
+      "n": "03",
+      "title": "Leave the manual accounts on the desk",
+      "detail": "Higgsfield API, Higgsfield Starter, Cursor, Codex, Muse (Trinity), and GrokBot (Ravyn)."
+    },
+    {
+      "n": "04",
+      "title": "Print the calendar date",
+      "detail": "Resets and renewals stay dates. The desk does not count down in days."
+    },
+    {
+      "n": "05",
+      "title": "Draw usage as mini bars",
+      "detail": "Slate bars for earlier days, a red bar for the latest day."
+    }
+  ]
+}

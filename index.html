@@ -4,71 +4,296 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="description" content="CreditLabz prototype. Fake API balances only. No provider calls and no API keys." />
-  <meta name="theme-color" content="#100e0c" />
-  <meta property="og:title" content="CreditLabz — prototype (fake data)" />
-  <meta property="og:description" content="Ravyn bake-off ledger with invented balances. Not connected to any provider." />
-  <title>CreditLabz — prototype (fake data)</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="description" content="Compare every CreditLabz Ravyn look as a rendered site." />
+  <meta name="theme-color" content="#0c0e12" />
+  <title>CreditLabz Ravyn — compare looks</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c0e12;
+      --card: #15181e;
+      --ink: #f2f4f7;
+      --muted: #a7b0ba;
+      --faint: #7d8792;
+      --line: rgba(232, 236, 242, 0.12);
+      --sans: "Segoe UI", system-ui, sans-serif;
+      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(900px 420px at 100% -10%, rgba(224, 177, 90, 0.08), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 64px;
+    }
+
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      z-index: 5;
+      padding: 8px 10px;
+      background: #f2f4f7;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .skip:focus { top: 8px; }
+
+    header h1 {
+      margin: 8px 0 0;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 650;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lede {
+      max-width: 62ch;
+      margin: 14px 0 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--card);
+      text-decoration: none;
+      --accent: #e0b15a;
+      --accent-2: var(--accent);
+    }
+
+    .card:hover { border-color: rgba(242, 244, 247, 0.28); }
+    .card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .rail {
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .shot {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: #101216;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .shot-missing {
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(420px 180px at 80% 0%, rgba(224, 177, 90, 0.22), transparent 60%),
+        #100e0c;
+      color: #f3e6cc;
+    }
+
+    .mock {
+      width: min(78%, 280px);
+    }
+
+    .mock p {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .mock p span { color: #e0b15a; }
+
+    .mock i {
+      display: block;
+      height: 28px;
+      margin-top: 8px;
+      border-radius: 3px;
+      background: rgba(255, 246, 232, 0.06);
+      border: 1px solid rgba(255, 244, 230, 0.08);
+    }
+
+    .missing {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      margin: 0;
+      padding: 4px 8px;
+      border-radius: 3px;
+      background: rgba(16, 14, 12, 0.82);
+      color: #f3e6cc;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .meta { padding: 16px 16px 18px; }
+
+    .path {
+      margin: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .meta h2 {
+      margin: 6px 0 0;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .label {
+      margin: 6px 0 0;
+      color: var(--ink);
+    }
+
+    .src {
+      margin: 10px 0 0;
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .open {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .card:hover .open { text-decoration: underline; }
+
+    footer {
+      margin-top: 22px;
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    footer code {
+      font-family: var(--mono);
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .wrap { padding-top: 28px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="atmosphere" aria-hidden="true"></div>
-  <a class="skip" href="#main">Skip to ledger</a>
-  <p class="banner" role="status">
-    <span class="stamp">Prototype / fake data</span>
-    <span class="banner-note">Dummy numbers only. This page never calls a provider.</span>
-  </p>
-  <div class="page">
-    <header class="mast">
-      <div class="mast-title">
-        <p class="kicker">Private credit desk</p>
-        <h1>CreditLab<span class="mark">z</span></h1>
-      </div>
-      <p class="asof" id="asof">Dummy timestamp loading…</p>
+  <a class="skip" href="#looks">Skip to looks</a>
+  <div class="wrap">
+    <header>
+      <p class="kicker">CreditLabz Ravyn bake-off</p>
+      <h1>Compare every look.</h1>
+      <p class="lede">Four rendered sites, one folder each. Open a card to click through that version with its own CSS, JavaScript, and dummy ledger. Prototype data only.</p>
     </header>
 
-    <main id="main">
-      <section class="summary" id="summary" aria-label="Ledger summary">
-        <p class="loading">Loading dummy ledger…</p>
-      </section>
-
-      <section class="section" id="live" aria-labelledby="live-heading">
-        <div class="section-head">
-          <h2 id="live-heading"><span>01</span> Live balances</h2>
-          <p>Sample balances held in the dummy file. They are not fetched from fal.ai, OpenRouter, or DeepSeek.</p>
+    <main id="looks" class="grid">
+      <a class="card" href="main/" style="--accent:#e0b15a">
+        <div class="rail"></div>
+        <div class="shot">
+          <img src="main/assets/screenshot.png" alt="Gold CreditLabz ledger on charcoal, with glass balance cards and a red alert." />
         </div>
-        <div class="live-grid" id="live-grid"></div>
-      </section>
-
-      <section class="section" id="manual" aria-labelledby="manual-heading">
-        <div class="section-head">
-          <h2 id="manual-heading"><span>02</span> Subscriptions / manual</h2>
-          <p>Hand-entered figures and placeholders. No billing API is attached.</p>
+        <div class="meta">
+          <p class="path">/main/</p>
+          <h2>Main</h2>
+          <p class="label">Gold / house baseline</p>
+          <p class="src">branch main · 3e6a919</p>
+          <span class="open">Open this look</span>
         </div>
-        <div class="stack" id="manual-list"></div>
-      </section>
+      </a>
 
-      <section class="section" id="alerts" aria-labelledby="alerts-heading">
-        <div class="section-head">
-          <h2 id="alerts-heading"><span>03</span> Alerts</h2>
-          <p>Dummy deadlines. Nothing is monitoring a real account.</p>
+      <a class="card" href="v1/" style="--accent:#e0b15a">
+        <div class="rail"></div>
+        <div class="shot shot-missing">
+          <div class="mock" aria-hidden="true">
+            <p>CreditLab<span>z</span></p>
+            <i></i><i></i><i></i>
+          </div>
+          <p class="missing">No screenshot on this branch</p>
         </div>
-        <div class="stack" id="alert-list"></div>
-      </section>
+        <div class="meta">
+          <p class="path">/v1/</p>
+          <h2>V1</h2>
+          <p class="label">First gold preview. Same rendered ledger as main.</p>
+          <p class="src">branch preview/creditlabz-v1 · ef1a7a9</p>
+          <span class="open">Open this look</span>
+        </div>
+      </a>
+
+      <a class="card" href="v2-cyan-dark/" style="--accent:#2ee6ff; --accent-2:#cbb6ff">
+        <div class="rail"></div>
+        <div class="shot">
+          <img src="v2-cyan-dark/assets/screenshot.png" alt="Near-black CreditLabz ledger with cyan type and soft purple sparklines." />
+        </div>
+        <div class="meta">
+          <p class="path">/v2-cyan-dark/</p>
+          <h2>V2 cyan dark</h2>
+          <p class="label">Cyan + soft purple</p>
+          <p class="src">branch preview/creditlabz-v2-cyan-dark · 0d7b2fa</p>
+          <span class="open">Open this look</span>
+        </div>
+      </a>
+
+      <a class="card" href="v3-next-pass/" style="--accent:#e10600; --accent-2:#e0b05c">
+        <div class="rail"></div>
+        <div class="shot">
+          <img src="v3-next-pass/assets/screenshot.png" alt="Gray CreditLabz desk with a red umbrella Z, Manrope type, and gold micro accents." />
+        </div>
+        <div class="meta">
+          <p class="path">/v3-next-pass/</p>
+          <h2>V3 next pass</h2>
+          <p class="label">Gray umbrella-Z / Manrope red-gold desk</p>
+          <p class="src">branch preview/creditlabz-v3-next-pass · a1c9d7d</p>
+          <span class="open">Open this look</span>
+        </div>
+      </a>
     </main>
 
-    <footer class="colophon">
-      <p class="stamp">Prototype / fake data</p>
-      <p>Every balance, renewal, sparkline, and deadline on this page is invented for the CreditLabz Ravyn bake-off. The ledger is read from <code>data/balances.json</code>. CreditLabz does not call providers and does not store API keys.</p>
+    <footer>
+      <p>Live once GitHub Pages serves branch <code>previews</code> from <code>/</code>: <code>/main/</code>, <code>/v1/</code>, <code>/v2-cyan-dark/</code>, <code>/v3-next-pass/</code>.</p>
     </footer>
   </div>
-  <noscript>
-    <p class="banner">JavaScript is required to paint the dummy ledger from data/balances.json.</p>
-  </noscript>
-  <script src="js/app.js" defer></script>
 </body>
 </html>
