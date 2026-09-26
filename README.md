@@ -80,7 +80,6 @@ creditlabz-ravyn-preview/
 ├── assets/
 │   ├── logo.png
 │   └── screenshot.png
-├── favicon.svg
 ├── .nojekyll
 └── README.md
 ```
