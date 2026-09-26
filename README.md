@@ -3,19 +3,15 @@
 > Ravyn's next bake-off pass for Jon's **CreditLabz** desk. Deep charcoal and
 > cool gray, with red as the lead accent and gold only as a micro accent.
 
-[![GitHub Pages](https://img.shields.io/badge/github%20pages-awaiting%20source%20switch-lightgrey)](https://jonbeatz.github.io/creditlabz-ravyn-preview/)
+[![GitHub Pages](https://img.shields.io/badge/github%20pages-live-e10600)](https://jonbeatz.github.io/creditlabz-ravyn-preview/)
 [![Branch](https://img.shields.io/badge/branch-preview%2Fcreditlabz--v3--next--pass-e10600)](https://github.com/jonbeatz/creditlabz-ravyn-preview/tree/preview/creditlabz-v3-next-pass)
 [![Last commit](https://img.shields.io/github/last-commit/jonbeatz/creditlabz-ravyn-preview/preview/creditlabz-v3-next-pass)](https://github.com/jonbeatz/creditlabz-ravyn-preview/commits/preview/creditlabz-v3-next-pass)
 ![Static site](https://img.shields.io/badge/site-static%20html-8b95a3)
 
 **Published Pages:** https://jonbeatz.github.io/creditlabz-ravyn-preview/
 
-GitHub Pages is still built from **`preview/creditlabz-v2-cyan-dark`**, so that
-URL still shows the previous pass. This v3 branch is pushed and there is no
-pull request. Switching the source needs Pages admin: both the cloud token and
-the Actions token got HTTP 403 (`pages=write` is not granted), so the setting
-cannot be changed from here. In the repo, set Pages → Deploy from a branch →
-`preview/creditlabz-v3-next-pass`, folder `/`.
+GitHub Pages builds from **`preview/creditlabz-v3-next-pass`**, so that URL is
+this desk, with the gray umbrella Z in the header. There is no pull request.
 `main` still holds the earlier gold entry and is not modified by this pass.
 
 ![CreditLabz v3 preview](assets/screenshot.png)
@@ -67,7 +63,7 @@ labels.
 | Data    | `data/balances.json` (dummy only, clearly labeled)                    |
 | Type    | Manrope + IBM Plex Mono                                                |
 | Runtime | None — a local static server or GitHub Pages                           |
-| Hosting | GitHub Pages (`.nojekyll`). Source still `preview/creditlabz-v2-cyan-dark` until an admin points it at this branch. |
+| Hosting | GitHub Pages (`.nojekyll`) from `preview/creditlabz-v3-next-pass` |
 
 ## Project structure
 
