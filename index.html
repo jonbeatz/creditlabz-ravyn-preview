@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="description" content="Compare every CreditLabz Ravyn look as a rendered site." />
-  <meta name="theme-color" content="#0c0e12" />
+  <meta name="theme-color" content="#07080a" />
   <title>CreditLabz Ravyn — compare looks</title>
   <style>
     :root {
@@ -26,7 +26,7 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(900px 420px at 100% -10%, rgba(224, 177, 90, 0.08), transparent 55%),
+        radial-gradient(900px 420px at 100% -10%, rgba(46, 230, 255, 0.08), transparent 55%),
         var(--bg);
       color: var(--ink);
       font-family: var(--sans);
@@ -48,8 +48,8 @@
       top: -48px;
       z-index: 5;
       padding: 8px 10px;
-      background: #f2f4f7;
-      color: #111;
+      background: #2ee6ff;
+      color: #041014;
       text-decoration: none;
     }
 
@@ -94,7 +94,7 @@
       border-radius: 6px;
       background: var(--card);
       text-decoration: none;
-      --accent: #e0b15a;
+      --accent: #2ee6ff;
       --accent-2: var(--accent);
     }
 
@@ -112,7 +112,7 @@
     .shot {
       position: relative;
       aspect-ratio: 16 / 10;
-      background: #101216;
+      background: #07080a;
       border-bottom: 1px solid var(--line);
     }
 
@@ -122,49 +122,6 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-    }
-
-    .shot-missing {
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(420px 180px at 80% 0%, rgba(224, 177, 90, 0.22), transparent 60%),
-        #100e0c;
-      color: #f3e6cc;
-    }
-
-    .mock {
-      width: min(78%, 280px);
-    }
-
-    .mock p {
-      margin: 0 0 10px;
-      font-size: 22px;
-      letter-spacing: -0.03em;
-    }
-
-    .mock p span { color: #e0b15a; }
-
-    .mock i {
-      display: block;
-      height: 28px;
-      margin-top: 8px;
-      border-radius: 3px;
-      background: rgba(255, 246, 232, 0.06);
-      border: 1px solid rgba(255, 244, 230, 0.08);
-    }
-
-    .missing {
-      position: absolute;
-      left: 12px;
-      bottom: 12px;
-      margin: 0;
-      padding: 4px 8px;
-      border-radius: 3px;
-      background: rgba(16, 14, 12, 0.82);
-      color: #f3e6cc;
-      font-family: var(--mono);
-      font-size: 12px;
     }
 
     .meta { padding: 16px 16px 18px; }
@@ -226,38 +183,20 @@
     <header>
       <p class="kicker">CreditLabz Ravyn bake-off</p>
       <h1>Compare every look.</h1>
-      <p class="lede">Four rendered sites, one folder each. Open a card to click through that version with its own CSS, JavaScript, and dummy ledger. Prototype data only.</p>
+      <p class="lede">Three rendered sites, one folder each. Open a card to click through that version with its own CSS, JavaScript, and dummy ledger. The current desk keeps the v3 layout and wears the v2 cyan-dark colors. The v2 folder keeps the older cyan layout. Prototype data only.</p>
     </header>
 
     <main id="looks" class="grid">
-      <a class="card" href="main/" style="--accent:#e0b15a">
+      <a class="card" href="main/" style="--accent:#2ee6ff; --accent-2:#cbb6ff">
         <div class="rail"></div>
         <div class="shot">
-          <img src="main/assets/screenshot.png" alt="Gold CreditLabz ledger on charcoal, with glass balance cards and a red alert." />
+          <img src="main/assets/screenshot.png" alt="Near-black CreditLabz desk with cyan lead accents, violet urgency, and the gray umbrella Z." />
         </div>
         <div class="meta">
           <p class="path">/main/</p>
           <h2>Main</h2>
-          <p class="label">Gold / house baseline</p>
-          <p class="src">branch main · 3e6a919</p>
-          <span class="open">Open this look</span>
-        </div>
-      </a>
-
-      <a class="card" href="v1/" style="--accent:#e0b15a">
-        <div class="rail"></div>
-        <div class="shot shot-missing">
-          <div class="mock" aria-hidden="true">
-            <p>CreditLab<span>z</span></p>
-            <i></i><i></i><i></i>
-          </div>
-          <p class="missing">No screenshot on this branch</p>
-        </div>
-        <div class="meta">
-          <p class="path">/v1/</p>
-          <h2>V1</h2>
-          <p class="label">First gold preview. Same rendered ledger as main.</p>
-          <p class="src">branch preview/creditlabz-v1 · ef1a7a9</p>
+          <p class="label">Published desk. v3 layout with the cyan-dark palette.</p>
+          <p class="src">branch main · cd44cb4</p>
           <span class="open">Open this look</span>
         </div>
       </a>
@@ -270,29 +209,29 @@
         <div class="meta">
           <p class="path">/v2-cyan-dark/</p>
           <h2>V2 cyan dark</h2>
-          <p class="label">Cyan + soft purple</p>
+          <p class="label">Historical v2 layout · cyan + soft purple</p>
           <p class="src">branch preview/creditlabz-v2-cyan-dark · 0d7b2fa</p>
           <span class="open">Open this look</span>
         </div>
       </a>
 
-      <a class="card" href="v3-next-pass/" style="--accent:#e10600; --accent-2:#e0b05c">
+      <a class="card" href="v3-next-pass/" style="--accent:#2ee6ff; --accent-2:#cbb6ff">
         <div class="rail"></div>
         <div class="shot">
-          <img src="v3-next-pass/assets/screenshot.png" alt="Gray CreditLabz desk with a red umbrella Z, Manrope type, and gold micro accents." />
+          <img src="v3-next-pass/assets/screenshot.png" alt="v3 CreditLabz desk on a near-black field, with cyan usage bars and violet flags." />
         </div>
         <div class="meta">
           <p class="path">/v3-next-pass/</p>
           <h2>V3 next pass</h2>
-          <p class="label">Gray umbrella-Z / Manrope red-gold desk</p>
-          <p class="src">branch preview/creditlabz-v3-next-pass · a1c9d7d</p>
+          <p class="label">Current desk · v3 layout + cyan colors</p>
+          <p class="src">branch preview/creditlabz-v3-cyan · cd44cb4</p>
           <span class="open">Open this look</span>
         </div>
       </a>
     </main>
 
     <footer>
-      <p>Live once GitHub Pages serves branch <code>previews</code> from <code>/</code>: <code>/main/</code>, <code>/v1/</code>, <code>/v2-cyan-dark/</code>, <code>/v3-next-pass/</code>.</p>
+      <p>GitHub Pages serves branch <code>previews</code> from <code>/</code>: <code>/main/</code>, <code>/v2-cyan-dark/</code>, and <code>/v3-next-pass/</code>.</p>
     </footer>
   </div>
 </body>

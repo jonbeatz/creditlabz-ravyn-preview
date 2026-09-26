@@ -5,69 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="description" content="CreditLabz prototype. Fake API balances only. No provider calls and no API keys." />
-  <meta name="theme-color" content="#100e0c" />
+  <meta name="theme-color" content="#07080a" />
   <meta property="og:title" content="CreditLabz — prototype (fake data)" />
-  <meta property="og:description" content="Ravyn bake-off ledger with invented balances. Not connected to any provider." />
+  <meta property="og:description" content="Ravyn bake-off desk with invented balances, usage bars, and calendar reset dates." />
   <title>CreditLabz — prototype (fake data)</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="atmosphere" aria-hidden="true"></div>
-  <a class="skip" href="#main">Skip to ledger</a>
-  <p class="banner" role="status">
-    <span class="stamp">Prototype / fake data</span>
-    <span class="banner-note">Dummy numbers only. This page never calls a provider.</span>
-  </p>
+  <a class="skip" href="#main">Skip to desk</a>
   <div class="page">
-    <header class="mast">
-      <div class="mast-title">
-        <p class="kicker">Private credit desk</p>
-        <h1>CreditLab<span class="mark">z</span></h1>
+    <header class="topbar">
+      <a class="brand" href="#overview">
+        <img class="logo" src="assets/logo.png" width="48" height="48" alt="" />
+        <span class="brand-lockup">
+          <span class="brand-name">CreditLabz</span>
+          <span class="brand-tick" aria-hidden="true"></span>
+        </span>
+      </a>
+      <div class="top-actions">
+        <button type="button" class="btn" id="export-btn">Export setup</button>
+        <button type="button" class="btn btn-lead" id="configure-btn">Configure prototype</button>
       </div>
-      <p class="asof" id="asof">Dummy timestamp loading…</p>
     </header>
 
     <main id="main">
-      <section class="summary" id="summary" aria-label="Ledger summary">
-        <p class="loading">Loading dummy ledger…</p>
+      <section class="hero">
+        <p class="kicker"><span class="kicker-rule" aria-hidden="true"></span>Ravyn command view</p>
+        <h1>Credit, usage, and<br />the calendar reset.</h1>
+        <p class="lede">A command view of usage-based API credit and recurring AI plans. Sample figures only, for a future private DigitalStudioz desk.</p>
       </section>
 
-      <section class="section" id="live" aria-labelledby="live-heading">
-        <div class="section-head">
-          <h2 id="live-heading"><span>01</span> Live balances</h2>
-          <p>Sample balances held in the dummy file. They are not fetched from fal.ai, OpenRouter, or DeepSeek.</p>
-        </div>
-        <div class="live-grid" id="live-grid"></div>
-      </section>
+      <p class="demo" role="status">
+        <span class="demo-main">
+          <span class="stamp">Demo</span>
+          <span class="demo-copy"><strong>Prototype data only.</strong> Every balance, renewal date, usage bar, and connection below is a sample. No credentials are stored or sent from this page.</span>
+        </span>
+        <span class="demo-side">
+          <span>Safe dummy data</span>
+          <span>No live accounts</span>
+        </span>
+      </p>
 
-      <section class="section" id="manual" aria-labelledby="manual-heading">
-        <div class="section-head">
-          <h2 id="manual-heading"><span>02</span> Subscriptions / manual</h2>
-          <p>Hand-entered figures and placeholders. No billing API is attached.</p>
+      <div class="tabbar">
+        <div class="tablist" role="tablist" aria-label="Desk sections">
+          <button type="button" class="tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview" data-tab="overview" tabindex="0">Overview</button>
+          <button type="button" class="tab" id="tab-connections" role="tab" aria-selected="false" aria-controls="panel-connections" data-tab="connections" tabindex="-1">Connections</button>
+          <button type="button" class="tab" id="tab-build" role="tab" aria-selected="false" aria-controls="panel-build" data-tab="build" tabindex="-1">Build plan</button>
         </div>
-        <div class="stack" id="manual-list"></div>
-      </section>
+        <p class="snapshot" id="snapshot">Sample snapshot</p>
+      </div>
 
-      <section class="section" id="alerts" aria-labelledby="alerts-heading">
-        <div class="section-head">
-          <h2 id="alerts-heading"><span>03</span> Alerts</h2>
-          <p>Dummy deadlines. Nothing is monitoring a real account.</p>
+      <div class="panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" data-filter="all">
+        <section class="metrics" id="metrics" aria-label="Summary">
+          <p class="loading">Loading dummy ledger…</p>
+        </section>
+
+        <div class="filters" id="filters" role="group" aria-label="Filter accounts">
+          <button type="button" class="filter" data-filter="all" aria-pressed="true">All providers</button>
+          <button type="button" class="filter" data-filter="live" aria-pressed="false">Live balances</button>
+          <button type="button" class="filter" data-filter="manual" aria-pressed="false">Manual accounts</button>
         </div>
-        <div class="stack" id="alert-list"></div>
-      </section>
+
+        <section class="block is-live-block" id="live-section" aria-labelledby="live-heading">
+          <div class="section-head">
+            <h2 id="live-heading">Live API balances</h2>
+            <p>Sample balances. Not fetched from fal.ai, OpenRouter, or DeepSeek.</p>
+          </div>
+          <div class="live-grid" id="live-grid"></div>
+        </section>
+
+        <section class="block is-live-block" id="week-section" aria-labelledby="week-heading">
+          <div class="card week-card">
+            <div class="section-head tight">
+              <h2 id="week-heading">7-day usage</h2>
+              <p id="week-range">Sample daily spend across the live balances.</p>
+            </div>
+            <div class="week" id="week-chart"></div>
+            <p class="legend" id="week-legend">
+              <span class="swatch" aria-hidden="true"></span> Earlier days
+              <span class="swatch is-latest" aria-hidden="true"></span> Latest day
+            </p>
+          </div>
+        </section>
+
+        <section class="block is-manual-block" id="manual-section" aria-labelledby="manual-heading">
+          <div class="section-head">
+            <h2 id="manual-heading">Manual accounts</h2>
+            <p>Hand-entered figures. No billing API is attached.</p>
+          </div>
+          <div class="manual-grid" id="manual-grid"></div>
+        </section>
+
+        <section class="block is-manual-block" id="alert-section" aria-labelledby="alert-heading">
+          <h2 class="sr" id="alert-heading">Alerts</h2>
+          <div id="alert-list"></div>
+        </section>
+      </div>
+
+      <div class="panel" id="panel-connections" role="tabpanel" aria-labelledby="tab-connections" hidden>
+        <div class="section-head">
+          <h2>Connections</h2>
+          <p id="conn-count">Sample slots. None are authenticated.</p>
+        </div>
+        <div class="stack" id="conn-list"></div>
+        <div class="section-head">
+          <h2>Access model</h2>
+          <p>How a later private desk would reach each account.</p>
+        </div>
+        <div class="model-grid" id="access-model"></div>
+      </div>
+
+      <div class="panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build" hidden>
+        <div class="section-head">
+          <h2>Build plan</h2>
+          <p>What this prototype is holding the place for.</p>
+        </div>
+        <div id="build-list"></div>
+      </div>
     </main>
 
     <footer class="colophon">
-      <p class="stamp">Prototype / fake data</p>
-      <p>Every balance, renewal, sparkline, and deadline on this page is invented for the CreditLabz Ravyn bake-off. The ledger is read from <code>data/balances.json</code>. CreditLabz does not call providers and does not store API keys.</p>
+      <p class="stamp stamp-quiet">Prototype / fake data</p>
+      <p id="footer-note">Every balance, renewal date, usage bar, and connection on this page is invented for the CreditLabz Ravyn bake-off. The desk reads <code>data/balances.json</code>. CreditLabz does not call providers and does not store API keys.</p>
     </footer>
   </div>
+
+  <dialog id="config-dialog" aria-labelledby="config-title"></dialog>
   <noscript>
-    <p class="banner">JavaScript is required to paint the dummy ledger from data/balances.json.</p>
+    <p class="demo">JavaScript is required to paint the dummy ledger from data/balances.json.</p>
   </noscript>
   <script src="js/app.js" defer></script>
 </body>

@@ -1,20 +1,20 @@
-# CreditLabz — Ravyn Preview (v3)
+# CreditLabz — Ravyn desk (v3 + cyan)
 
-> Ravyn's next bake-off pass for Jon's **CreditLabz** desk. Deep charcoal and
-> cool gray, with red as the lead accent and gold only as a micro accent.
+> The v3 command desk in the v2 cyan-dark palette. Cyan leads. Violet marks
+> urgency, flags, and deadlines. The desk structure stays the v3 pass.
 
-[![GitHub Pages](https://img.shields.io/badge/github%20pages-live-e10600)](https://jonbeatz.github.io/creditlabz-ravyn-preview/)
-[![Branch](https://img.shields.io/badge/branch-preview%2Fcreditlabz--v3--next--pass-e10600)](https://github.com/jonbeatz/creditlabz-ravyn-preview/tree/preview/creditlabz-v3-next-pass)
-[![Last commit](https://img.shields.io/github/last-commit/jonbeatz/creditlabz-ravyn-preview/preview/creditlabz-v3-next-pass)](https://github.com/jonbeatz/creditlabz-ravyn-preview/commits/preview/creditlabz-v3-next-pass)
-![Static site](https://img.shields.io/badge/site-static%20html-8b95a3)
+[![GitHub Pages](https://img.shields.io/badge/github%20pages-live-2ee6ff)](https://jonbeatz.github.io/creditlabz-ravyn-preview/)
+[![Branch](https://img.shields.io/badge/branch-main-2ee6ff)](https://github.com/jonbeatz/creditlabz-ravyn-preview/tree/main)
+[![Last commit](https://img.shields.io/github/last-commit/jonbeatz/creditlabz-ravyn-preview/main)](https://github.com/jonbeatz/creditlabz-ravyn-preview/commits/main)
+![Static site](https://img.shields.io/badge/site-static%20html-93a0ab)
 
-**Published Pages:** https://jonbeatz.github.io/creditlabz-ravyn-preview/
+**Compare gallery:** https://jonbeatz.github.io/creditlabz-ravyn-preview/
 
-GitHub Pages builds from **`preview/creditlabz-v3-next-pass`**, so that URL is
-this desk, with the gray umbrella Z in the header. There is no pull request.
-`main` still holds the earlier gold entry and is not modified by this pass.
+**This desk on the gallery:** https://jonbeatz.github.io/creditlabz-ravyn-preview/main/ and https://jonbeatz.github.io/creditlabz-ravyn-preview/v3-next-pass/
 
-![CreditLabz v3 preview](assets/screenshot.png)
+GitHub Pages builds from **`previews`**, which is the compare gallery. This file is the published desk on `main`. The color pass landed from `preview/creditlabz-v3-cyan`. `/v2-cyan-dark/` on the gallery keeps the older cyan layout so the two can be compared. `/v1/` is gone.
+
+![CreditLabz cyan desk](assets/screenshot.png)
 
 > **Prototype data only.** Every balance, renewal date, usage bar, and
 > connection is invented. No credentials are stored or sent from this page.
@@ -22,7 +22,7 @@ this desk, with the gray umbrella Z in the header. There is no pull request.
 ## What's inside
 
 - **Live API balance cards** — fal.ai, OpenRouter, and DeepSeek. Each card
-  draws mini usage bars (slate for earlier days, glowing red for the latest)
+  draws mini usage bars (cool slate for earlier days, glowing cyan for the latest)
   and a sample delta versus the 12-day average: fal.ai ▲$2.40, OpenRouter
   ▲$0.95, DeepSeek ▲$1.80.
 - **7-day usage panel** — the same sample window, last seven days combined.
@@ -31,12 +31,12 @@ this desk, with the gray umbrella Z in the header. There is no pull request.
   plan, 36% used, 315M tokens left, resets September 28, 2026), and GrokBot
   (Ravyn).
 - **GrokBot (Ravyn)** — a manual account. Weekly usage 3%, resets October 2,
-  2026. On-demand $8.09 / $2, shown over limit in red, resets October 11,
+  2026. On-demand $8.09 / $2, shown over limit in violet, resets October 11,
   2026. She appears in Connections, the configure dialog, the manual list,
-  and the sanitized export. Cyan is only her monogram.
+  and the sanitized export. Her monogram uses the same lead cyan as the desk.
 - **Configured connections** — 0/9. None of the sample slots are authenticated.
 - **Higgsfield cashback** — use or lose, closes September 30, 2026. The desk
-  prints that calendar date. It does not count down in days.
+  prints that calendar date in violet. It does not count down in days.
 - **Desk shell** — sticky Overview / Connections / Build plan tabs, a
   four-metric strip, monograms, a configure/edit dialog, an access-model
   panel, and one global DEMO banner.
@@ -46,14 +46,14 @@ this desk, with the gray umbrella Z in the header. There is no pull request.
 
 ## Design language
 
-Deep charcoal field, cool gray grid, flat panels. Corners are 4px. No colored
-side strokes and no glass wash. **Red** leads: the latest usage bar, over-limit
-amounts, use-or-lose, and the configure button. **Gold** is micro only — a tick
-in the wordmark, a slit in the mark, and the ledger filename. Cyan is reserved
-for the GrokBot (Ravyn) monogram.
+Near-black field `#07080a`, cyan atmosphere, and glass panels. Corners stay
+about 4px. **Cyan** `#2ee6ff` leads: the wordmark tick, configure button,
+latest usage bar, selected tab, and selection (cyan on `#041014`). **Violet**
+`#cbb6ff` is urgency: over-limit amounts, use-or-lose, and deadline dates.
+Figures are `#f4f8fb`. There is no red lead and no gold micro accent.
 
 **Manrope** carries the UI. **IBM Plex Mono** carries figures, eyebrows, and
-labels.
+labels. The header mark is the gray umbrella Z.
 
 ## Tech stack
 
@@ -63,7 +63,7 @@ labels.
 | Data    | `data/balances.json` (dummy only, clearly labeled)                    |
 | Type    | Manrope + IBM Plex Mono                                                |
 | Runtime | None — a local static server or GitHub Pages                           |
-| Hosting | GitHub Pages (`.nojekyll`) from `preview/creditlabz-v3-next-pass` |
+| Hosting | GitHub Pages (`.nojekyll`) from `previews`; this desk is `main`       |
 
 ## Project structure
 
@@ -90,6 +90,7 @@ Visit http://127.0.0.1:4173/ — a local server is required so the JSON ledger l
 
 ## Workflow
 
-This file is the v3 branch. It does not merge to `main`. No pull request unless
-Jon asks. Any UI change on this branch also replaces `assets/screenshot.png`
-in the same commit, so the README hero matches the current dark desk.
+The cyan palette is on `main`. The compare gallery on `previews` shows this
+desk at `/main/` and `/v3-next-pass/`, and the older layout at `/v2-cyan-dark/`.
+Any UI change also replaces `assets/screenshot.png` in the same commit, so the
+README hero matches the current dark desk.
